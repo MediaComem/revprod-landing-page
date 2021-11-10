@@ -1,0 +1,43 @@
+{
+  "name": "comem-archidep-revprod-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page of the website for The Revolutionary Product",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MediaComem/revprod-landing-page.git"
+  },
+  "keywords": [
+    "revolutionary",
+    "product"
+  ],
+  "author": "Simon Oulevay <contact@alphahydrae.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MediaComem/revprod-landing-page/issues"
+  },
+  "homepage": "https://github.com/MediaComem/revprod-landing-page#readme",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon",
+    "lint": "prettier --check .",
+    "lint:write": "prettier --write .",
+    "start": "node ./bin.js",
+    "test": "npm run lint"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "lodash-es": "^4.17.21",
+    "log4js": "^6.3.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.4.1"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  }
+}
