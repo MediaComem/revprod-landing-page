@@ -61,19 +61,36 @@
       <div class="container px-5">
         <div class="row gx-5 justify-content-center">
           <div class="col-lg-6">
-            <div class="text-center my-5">
-              <h1 class="display-5 fw-bolder text-white mb-2">
-                <i class="bi bi-diamond-half"></i>
-                <%= title %>
+            <div class="my-5">
+              <h1
+                class="
+                  d-flex
+                  align-items-center
+                  display-5
+                  fw-bolder
+                  text-white
+                  mb-2
+                "
+              >
+                <i class="bi bi-diamond-half me-3"></i>
+                <span><%= title %></span>
               </h1>
               <p class="lead text-white-50 mb-4">
                 Enabling holistic convergence & dynamically productizing
                 resource-maximizing paradigms.
               </p>
-              <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+              <div
+                class="
+                  d-grid
+                  gap-3
+                  d-sm-flex
+                  justify-content-sm-center
+                  text-center
+                "
+              >
                 <a
                   class="btn btn-primary btn-lg px-4 me-sm-3"
-                  href="<%= backendBaseUrl %>/donate"
+                  href="<%= backendBaseUrl %>/share"
                 >
                   Share your experience!
                 </a>
@@ -92,7 +109,7 @@
             <div
               class="feature bg-primary bg-gradient text-white rounded-3 mb-3"
             >
-              <i class="bi bi-shield-check"></i>
+              <i class="bi bi-fan"></i>
             </div>
             <h2 class="h4 fw-bolder">
               Reintermediate Transparent Deliverables
@@ -109,7 +126,7 @@
             <div
               class="feature bg-primary bg-gradient text-white rounded-3 mb-3"
             >
-              <i class="bi bi-bandaid"></i>
+              <i class="bi bi-activity"></i>
             </div>
             <h2 class="h4 fw-bolder">Brand Wireless Channels</h2>
             <p>
@@ -124,7 +141,7 @@
             <div
               class="feature bg-primary bg-gradient text-white rounded-3 mb-3"
             >
-              <i class="bi bi-brightness-high"></i>
+              <i class="bi bi-boxes"></i>
             </div>
             <h2 class="h4 fw-bolder">Aggregate Back-end Systems</h2>
             <p>
@@ -139,14 +156,16 @@
       </div>
     </section>
 
-    <!-- Testimonials -->
+    <!-- Comments -->
     <section class="py-5 border-bottom">
       <div class="container px-5 my-5 px-5">
         <div class="text-center mb-5">
           <h2 class="fw-bolder">Testimonials</h2>
-          <p class="lead mb-0">From customers who love our product</p>
+          <p class="lead mb-0">
+            From customers who love The Revolutionary Product
+          </p>
           <div
-            id="donations-spinner"
+            id="comments-spinner"
             class="spinner-border mt-3 text-primary"
             role="status"
           >
@@ -154,8 +173,8 @@
           </div>
         </div>
         <div class="row gx-5 justify-content-center">
-          <div id="donations" class="col-lg-6">
-            <div class="card mb-4 donation d-none">
+          <div id="comments" class="col-lg-6">
+            <div class="card mb-4 comment d-none">
               <div class="card-body p-4">
                 <div class="d-flex">
                   <div class="flex-shrink-0">
@@ -167,7 +186,7 @@
                     <p class="mb-1 text"></p>
                     <div class="small text-muted">
                       -
-                      <strong class="donator"></strong>
+                      <strong class="text"></strong>
                       on
                       <span class="date"></span>
                     </div>
@@ -205,73 +224,64 @@
     <script>
       const DateTime = luxon.DateTime;
 
-      const $donation = $('.donation');
-      const $donations = $('#donations');
-      const $donationsSpinner = $('#donations-spinner');
+      const $comment = $('.comment');
+      const $comments = $('#comments');
+      const $commentsSpinner = $('#comments-spinner');
 
-      const donationsUrl = '<%= backendBaseUrl %>/donations';
-      Promise.resolve(donationsUrl)
-        .then(fetchDonations)
-        .then(displayDonations)
-        .catch(showDonationsError);
+      const commentsUrl = '<%= backendBaseUrl %>/comments';
+      Promise.resolve(commentsUrl)
+        .then(fetchComments)
+        .then(displayComments)
+        .catch(showCommentsError);
 
-      function fetchDonations(url) {
+      function fetchComments(url) {
         const headers = new Headers();
-        headers.append('Pragma', 'no-cache');
-        headers.append('Cache-Control', 'no-cache');
 
         return fetch(url, {
           headers: headers
         }).then(res => res.json());
       }
 
-      function displayDonations(donations) {
-        $donationsSpinner.remove();
+      function displayComments(comments) {
+        $commentsSpinner.remove();
 
-        if (donations.length === 0) {
+        if (comments.length === 0) {
           return $('<p class="text-center text-muted" />')
-            .append($('<em />').text('No one has donated yet'))
-            .appendTo($donations);
+            .append($('<em />').text('No one has commented yet'))
+            .appendTo($comments);
         }
 
-        donations.filter(hasTestimonial).forEach(donation => {
-          $donation
+        comments.forEach(comment => {
+          $comment
             .clone()
             .removeClass('d-none')
             .find('.text')
-            .text(donation.testimonial)
+            .text(comment.text)
             .end()
             .find('.donator')
-            .text(donation.userName)
+            .text(comment.name)
             .end()
             .find('.date')
             .text(
-              DateTime.fromISO(donation.date).toLocaleString(
+              DateTime.fromISO(comment.date).toLocaleString(
                 DateTime.DATETIME_MED
               )
             )
             .end()
-            .appendTo($donations);
+            .appendTo($comments);
         });
       }
 
-      function showDonationsError(err) {
-        $donationsSpinner.remove();
+      function showCommentsError(err) {
+        $commentsSpinner.remove();
 
-        console.warn('Could not fetch or display donations', err);
+        console.warn('Could not fetch or display comments', err);
 
         $('<p class="text-center text-danger" />')
           .text(
-            'The list of donations is not available at this time. Please try again later.'
+            'Comments are not available at this time. Please try again later.'
           )
-          .appendTo($donations);
-      }
-
-      function hasTestimonial(donation) {
-        return (
-          typeof donation.testimonial === 'string' &&
-          donation.testimonial.trim().length >= 1
-        );
+          .appendTo($comments);
       }
     </script>
   </body>
