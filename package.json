@@ -1,5 +1,5 @@
 {
-  "name": "comem-archidep-revprod-landing-page",
+  "name": "revprod-landing-page",
   "version": "1.0.0",
   "description": "Landing page of the website for The Revolutionary Product",
   "private": true,
@@ -26,14 +26,14 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "lodash-es": "^4.17.21",
     "log4js": "^6.3.0"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
+    "dotenv": "^14.3.2",
     "nodemon": "^2.0.15",
     "prettier": "^2.4.1"
   },
