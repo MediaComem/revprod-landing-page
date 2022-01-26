@@ -35,7 +35,7 @@ export async function loadConfig() {
   const logger = createLogger('config');
   logger.info(`Environment: ${env}`);
   logger.info(`Log level: ${logLevel}`);
-  logger.info(`Backend base URL: ${backendBaseUrl}`);
+  logger.info(`Backend base URL: ${backendBaseUrl || 'none'}`);
 
   return {
     // Environment,
