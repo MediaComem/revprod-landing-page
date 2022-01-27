@@ -11,7 +11,7 @@
     "revolutionary",
     "product"
   ],
-  "author": "Simon Oulevay <contact@alphahydrae.com>",
+  "author": "Simon Oulevay <simon.oulevay@heig-vd.ch>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MediaComem/revprod-landing-page/issues"
@@ -20,6 +20,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon",
+    "doctoc": "doctoc --github README.md",
     "lint": "prettier --check .",
     "lint:write": "prettier --write .",
     "start": "node ./bin.js",
@@ -33,6 +34,7 @@
     "log4js": "^6.3.0"
   },
   "devDependencies": {
+    "doctoc": "^2.1.0",
     "dotenv": "^14.3.2",
     "nodemon": "^2.0.15",
     "prettier": "^2.4.1"
