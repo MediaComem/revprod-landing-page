@@ -35,11 +35,11 @@
   },
   "devDependencies": {
     "doctoc": "^2.1.0",
-    "dotenv": "^14.3.2",
+    "dotenv": "^16.0.3",
     "nodemon": "^2.0.15",
     "prettier": "^2.4.1"
   },
   "engines": {
-    "node": ">= 16.0.0 < 17.0.0"
+    "node": ">= 18.0.0"
   }
 }
