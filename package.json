@@ -36,10 +36,10 @@
   "devDependencies": {
     "doctoc": "^2.1.0",
     "dotenv": "^16.0.3",
-    "nodemon": "^2.0.15",
-    "prettier": "^2.4.1"
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": "^20.0.0"
   }
 }
