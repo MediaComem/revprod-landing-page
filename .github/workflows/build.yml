@@ -15,6 +15,16 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4
 
+      # https://github.com/actions/cache
+      - name: Cache build
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
       # https://github.com/asdf-vm/actions#setup
       - name: Install asdf
         uses: asdf-vm/actions/setup@v3
@@ -29,7 +39,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
+          npm ci --prefer-offline
 
       - name: Check source code formatting
         run: |
