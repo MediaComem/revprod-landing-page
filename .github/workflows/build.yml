@@ -15,27 +15,8 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4
 
-      # https://github.com/actions/cache
-      - name: Cache build
-        uses: actions/cache@v4
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-
-
-      # https://github.com/asdf-vm/actions#setup
-      - name: Install asdf
-        uses: asdf-vm/actions/setup@v3
-        with:
-          asdf_branch: v0.14.1
-
-      - name: Install Node.js with asdf
-        run: |
-          asdf plugin add nodejs
-          asdf install nodejs
-          node --version
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v4
 
       - name: Install dependencies
         run: |
